@@ -6,7 +6,7 @@ buildscript {
   }
 
   dependencies {
-    classpath "com.android.tools.build:gradle:2.2.3"
+    classpath "com.android.tools.build:gradle:2.3.0-beta2"
     classpath "com.novoda:gradle-android-command-plugin:1.7.0"
     classpath "com.github.triplet.gradle:play-publisher:1.1.5"
     classpath "com.gradle:build-scan-plugin:1.4"
@@ -128,8 +128,13 @@ android {
     testApplicationId "burrows.apps.example.gif.test"
     testInstrumentationRunner "test.CustomTestRunner"
     resConfigs "en" // Keep only english resource files for now
+
     vectorDrawables {
       useSupportLibrary = true
+    }
+
+    jackOptions {
+      enabled = true
     }
   }
 
@@ -240,7 +245,6 @@ dependencies {
   compile deps.recyclerviewv7
   compile deps.supportAnnotations
   // Other
-  compile deps.butterknife
   compile deps.okhttp
   compile deps.loggingInterceptor
   compile deps.retrofit2Rxjava2Adapter
@@ -253,7 +257,6 @@ dependencies {
   compile deps.okhttp3Integration
   compile deps.dagger
 
-  annotationProcessor deps.butterknifeCompiler
   annotationProcessor deps.daggerCompiler
 
   debugCompile deps.leakcanaryAndroid
